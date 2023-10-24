@@ -1,1 +1,1 @@
-# langid - A repository about language identification methods
+# Langid - Language identification methods
