@@ -6,7 +6,7 @@ Author:         Erion Çano
 
 Reproduce:	    Tested on Ubuntu 23.10 with python=3.11.6
 
-Run:            python ml.py -c <classifier>
+Run:            python ml.py -c <classifier> (less than 1 minute runtime for most classifiers)
 '''
 
 from utils import *
@@ -35,16 +35,15 @@ args = parser.parse_args()
 data = pd.read_csv("./data/languages.csv")
 
 # separating the texts from the language categories 
-X = data["Text"]
-y = data["Language"]
+X = data["Text"] ; y = data["Language"]
 
 # converting language categories to numerical values
-le = LabelEncoder()
-y = le.fit_transform(y)
+le = LabelEncoder() ; y = le.fit_transform(y)
 
 # iterating through all samples to clean them
 for i, s in enumerate(X):
     X[i] = text_preprocess(s)
+
 
 '''
 Creating bag of words text representation with words used as features. A more carefull selection and combination (e.g., by including n-gram embeddings) of features can lead to better performance of the models.
