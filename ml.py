@@ -4,9 +4,7 @@ Description:    Script that uses machine learning models for identifying languag
 
 Author:         Erion Çano
 
-Language: 	    Python 3.11.6 
-
-Reproduce:	    Tested on Ubuntu 23.10 with Python 3.11.6
+Reproduce:	    Tested on Ubuntu 23.10 with python=3.11.6
 
 Run:            python ml.py -c <classifier>
 '''
@@ -27,7 +25,7 @@ def identify(text):
     x = cv.transform([text]).toarray()
     pred = model.predict(x)
     lang = le.inverse_transform(pred)
-    print(f"\nThe given text is written in: {lang[0]}")
+    print(f"\nThe given text is written in: {lang[0]}\n")
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-c', '--classifier', choices=['lr', 'mnb', 'svm', 'dt', 'knn', 'stck', 'rf', 'ada', 'gb', 'xgb'], help='Classification Model', required=True)
@@ -45,14 +43,14 @@ le = LabelEncoder()
 y = le.fit_transform(y)
 
 # iterating through all samples to clean them
-sample_lst = []
-for s in X:
-    clean_text = text_preprocess(s)
-    sample_lst.append(clean_text)
+for i, s in enumerate(X):
+    X[i] = text_preprocess(s)
 
-# creating bag of words text representation
+'''
+Creating bag of words text representation with words used as features. A more carefull selection and combination (e.g., by including n-gram embeddings) of features can lead to better performance of the models.
+'''
 cv = CountVectorizer()
-X = cv.fit_transform(sample_lst).toarray()
+X = cv.fit_transform(X).toarray()
 
 # train-test splitting of the samples
 x_train, x_test, y_train, y_test = train_test_split(X, y, test_size = 0.20)
