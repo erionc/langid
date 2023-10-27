@@ -1,11 +1,8 @@
 
 '''
 Description:    Script that uses multilingual BERT for identifying languages.
-
 Author:         Erion Çano
-
 Reproduce:	    Tested on Ubuntu 23.10 with CUDA=12.3, python=3.11.6, torch=2.1.0, tramsformers=4.35.0  
-
 Run:            python plm.py (~25 minutes runtime on RTX 3080 mobile 16 GB)
 '''
 
@@ -74,7 +71,7 @@ validation_dataloader = DataLoader(val_dataset, sampler=SequentialSampler(val_da
 
 
 '''
-Selecting the PLM to use. This choice usually has a significant impact on task performance. The specific model selected below is based on BERT, is relatively small and is pretrained on a set of 104 languages which includes all the 17 languages on the used dataset. Bigger PLMs with better architectures should provide better results.  
+Selecting the PLM to use. This choice usually has a significant impact on task performance. The specific model selected below is based on BERT, is relatively small and is pretrained on a set of 104 languages covering all the 17 languages on the used dataset. Bigger PLMs with better architectures should provide better results.  
 '''
 model = BertForSequenceClassification.from_pretrained("bert-base-multilingual-cased", num_labels=17, output_attentions=False, output_hidden_states=False, 
 )
