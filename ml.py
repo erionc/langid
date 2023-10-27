@@ -1,18 +1,17 @@
 
 '''
-Descript:	Script that uses machine learning models for identifying languages.
-Author:		Erion Çano
-Language: 	Python 3.11.6 
-Reproduce:	Tested on Ubuntu 23.10 with Python 3.11.6
-            Run: python ml.py -c <classifier>
+Description:    Script that uses machine learning models for identifying languages.
+
+Author:         Erion Çano
+
+Language: 	    Python 3.11.6 
+
+Reproduce:	    Tested on Ubuntu 23.10 with Python 3.11.6
+
+Run:            python ml.py -c <classifier>
 '''
 
 from utils import *
-import pandas as pd
-import numpy as np
-import os, sys, re, argparse
-from sklearn.preprocessing import LabelEncoder
-from sklearn.metrics import accuracy_score
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.linear_model import LogisticRegression
@@ -21,15 +20,14 @@ from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, Gradien
 import xgboost as xgb
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
-import warnings
-warnings.simplefilter("ignore")
+import warnings ; warnings.simplefilter("ignore")
 
 # function for identifying the given text from the user
 def identify(text):
     x = cv.transform([text]).toarray()
     pred = model.predict(x)
     lang = le.inverse_transform(pred)
-    print(f"The given text is written in: {lang[0]}")
+    print(f"\nThe given text is written in: {lang[0]}")
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-c', '--classifier', choices=['lr', 'mnb', 'svm', 'dt', 'knn', 'stck', 'rf', 'ada', 'gb', 'xgb'], help='Classification Model', required=True)
@@ -105,16 +103,17 @@ else:
     print("Wrong Classifier...")
     sys.exit()
 
-# fitting the model
+# training the selected model
 model.fit(x_train, y_train)
 
-# getting prediction 
+# getting prediction and accuracy
 y_pred = model.predict(x_test)
-
-# evaluating the model
 ac = accuracy_score(y_test, y_pred)
-print(f"\nThe accuracy of the selected model is {ac:.4f}\n")
-target_text = input("Type or paste your text below:\n")
+
+# report accuracy and confusion matrix
+print(f"\nOverall accuracy of the selected model is: {ac:.4f}\n")
+print(f"\nConfusion matrix is:\n {confusion_matrix(y_test, y_pred)}\n")
 
 # identifying language in text entered by the user
+target_text = input("Type or paste your text below:\n\n")
 identify(target_text)
