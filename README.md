@@ -1,6 +1,6 @@
 # Language identification methods
 
-Language Identification is a task within NLP (Natural Language Processing) which automates the process of identifying the natural language a piece of text (e.g., a document) is written in. This is usually a prerequirement for solving other NLP tasks relating to the identified language. Same as most other NLP tasks, language identification is commonly solved today with data-driven statistical and neural methods which require datasets to work. Some public datasets for language identification are:
+Language Identification is a task within NLP (Natural Language Processing) that automates the process of identifying the natural language a piece of text (e.g., a document) is written in. This is usually a requirement for solving other NLP tasks relating to the identified language. Same as most other NLP tasks, language identification is commonly solved today with data-driven statistical and neural methods that require datasets to work. Some public datasets for language identification are:
 
 1. Language Detection dataset of 10337 paragraphs from 17 natural languages [1].
 
@@ -10,7 +10,7 @@ Language Identification is a task within NLP (Natural Language Processing) which
 
 4. LID dataset of 121 lines of text, covering 201 natural languages [4]
 
-There are different approaches for solving the task. One approach is to consider it as a text categorization task and use traditional machine leaning classifiers which take little time to train. Another approach is to use multilingual PLMs (Pretrained Language Models) like BERT [5] and fine-tune them on a multilingual dataset like the ones listed above. Another approach is to utilize NLP libraries which provide ready-to-use language identification functions running on models under the hood. The examples below illustrate these approaches with Python code. For simplicity, only the first dataset listed above is used.
+There are different approaches to solving the task. One approach is to consider it as a text categorization task and use traditional machine learning classifiers which take little time to train. Another approach is to use multilingual PLMs (Pretrained Language Models) like BERT [5] and fine-tune them on a multilingual dataset like the ones listed above. Another approach is to utilize NLP libraries which provide ready-to-use language identification functions running on models under the hood. The examples below illustrate these approaches with Python code. For simplicity, only the first dataset listed above is used.
 
 
 ## Machine learning models
@@ -63,6 +63,11 @@ It takes about 25 minutes to run the script with the given hyperparameter setup 
 * This approach to solving the language identification task is limited by the languages that are supported in the training dataset. 
 
 
+## Libraries for language identification
+
+Today there are various libraries in high-level programming languages like Python that can be easily used for language identification with just a few lines of code. They offer functions that implement large models trained with huge amounts of texts, supporting hundreds of natural languages. An example is LangID that has been trained on 1629 natural languages [7]. The biggest issue with language identification task remains the support of low-resource or underrepresented languages.  
+
+
 ## References
 
 [1] https://www.kaggle.com/datasets/basilb2s/language-detection
@@ -73,6 +78,8 @@ It takes about 25 minutes to run the script with the given hyperparameter setup 
 
 [4] https://aclanthology.org/2023.acl-short.75.pdf
 
-[5] https://aclanthology.org/N19-1423/
+[5] https://aclanthology.org/N19-1423
 
 [6] https://arxiv.org/abs/1706.03762
+
+[7] https://aclanthology.org/2020.coling-main.579
