@@ -2,7 +2,7 @@
 '''
 Description:    Script that uses multilingual BERT for identifying languages.
 Author:         Erion Çano
-Reproduce:	    Tested on Ubuntu 23.10 with CUDA=12.3, python=3.11.6, torch=2.1.0, tramsformers=4.35.0  
+Reproduce:      Tested on Ubuntu 23.10 with CUDA=12.3, python=3.11.6, torch=2.1.0, tramsformers=4.35.0  
 Run:            python plm.py (~25 minutes runtime on RTX 3080 mobile 16 GB)
 '''
 

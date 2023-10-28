@@ -2,7 +2,7 @@
 '''
 Description:    Script that uses machine learning models for identifying languages.
 Author:         Erion Çano
-Reproduce:	    Tested on Ubuntu 23.10 with python=3.11.6
+Reproduce:      Tested on Ubuntu 23.10 with python=3.11.6
 Run:            python ml.py -c <classifier> (less than 1 minute runtime for most classifiers)
 '''
 
