@@ -65,7 +65,13 @@ It takes about 25 minutes to run the script with the given hyperparameter setup 
 
 ## Libraries for language identification
 
-Today there are various libraries in high-level programming languages like Python that can be easily used for language identification with just a few lines of code. They offer functions that implement large models trained with huge amounts of texts, supporting hundreds of natural languages. An example is LangID that has been trained on 1629 natural languages [7]. The biggest issue with language identification task remains the support of low-resource or underrepresented languages.  
+Today there are various libraries in high-level programming languages like Python that can be easily used for language identification with just a few lines of code. They offer functions that implement large models trained with huge amounts of texts, supporting hundreds of natural languages. An example is LangID that has been trained on 1629 natural languages [7]. Other libraries worthy to mention are spaCy and NLTK. The latter is used in the script lib.py which can be invoced with the following command: 
+
+```
+python lib.py
+```
+
+Despite the recent progress with PLMs and and LLMs, supporting low-resource or underrepresented languages remains a big challange of language identification task. Most of the spoken languages today follow under the low-resouce category since little texts are publicly available on those languages.   
 
 
 ## References
