@@ -10,18 +10,18 @@ Language Identification is a task within NLP (Natural Language Processing) that 
 
 4. LID dataset of 121 lines of text, covering 201 natural languages [4]
 
-There are different approaches to solving the task. One approach is to consider it as a text categorization task and use traditional machine learning classifiers which take little time to train. Another approach is to use multilingual PLMs (Pretrained Language Models) like BERT [5] and fine-tune them on a multilingual dataset like the ones listed above. Another approach is to utilize NLP libraries which provide ready-to-use language identification functions running on models under the hood. The examples below illustrate these approaches with Python code. For simplicity, only the first dataset listed above is used.
+There are different approaches to solving the task. One approach is to consider it as a text categorization task and use traditional machine learning classifiers which take little time to train. Another approach is to use multilingual PLMs (Pretrained Language Models) like BERT [5] and fine-tune them on a multilingual dataset like the ones listed above. A third approach is to utilize NLP libraries which provide ready-to-use language identification functions running on models under the hood. The examples below illustrate these approaches with Python code. For simplicity, only the first dataset listed above is used.
 
 
 ## Machine learning models
 
-Data-driven methods based on traditional machine learning algorithms are still effective for solving various NLP tasks. Some of the popular methods for classification include Support Vector Machine, Logistic Regression, Naive Bayes, K-nearest Neightbors and Decition Trees. There are also ensemble methods like Random Forest, Gradient Boosting etc. which combine results from different learning models. The script ml.py implements some of these methods and can be run with the following command:
+Data-driven methods based on traditional machine learning algorithms are still effective for solving certain NLP tasks. Some of the popular methods for classification include Support Vector Machine, Logistic Regression, Naive Bayes, K-nearest Neightbors and Decition Trees. There are also ensemble methods like Random Forest, Gradient Boosting etc. The latter combine results from different learning models to improve the predictive performance. The script ml.py implements some of these methods and can be run with the following command:
 
 ```
 python ml.py -c <method>
 ```
 
-The options to choose are ["lr", "mnb", "svm", "knn", "dt", "stck", "rf", "ada", "gb", "xgb"]. Most of the models are trained within one minute. The language classification accuracy ranges from 85 % to 96 % which may be acceptable in some scenarios.  
+The options to choose are ["lr", "mnb", "svm", "knn", "dt", "stck", "rf", "ada", "gb", "xgb"]. Most of the models take less than one minute to train. The language classification accuracy ranges from 85 % to 96 % which may be acceptable in some scenarios.  
 
 
 ### Remarks
@@ -41,7 +41,7 @@ The options to choose are ["lr", "mnb", "svm", "knn", "dt", "stck", "rf", "ada",
 
 ## Pretrained language models
 
-PLMs or LLMs (Large Language Models) represent new NLP direction which has become dominant in the last five years. They are based on Transformer [6] encoder and/or decoder architectures pretrained with large amounts of unlabeled texts in one or many natural languages. Fine-tuning the PLMs on specific tasks with labeled data creates very high-performing models for many NLP tasks. The script plm.py fine-tunes Multilingual BERT and can be run with the following command: 
+PLMs or LLMs (Large Language Models) represent a new NLP direction which has become dominant in the last five years. They are based on Transformer [6] encoder and/or decoder architectures pretrained with large amounts of unlabeled texts in one or many natural languages. Fine-tuning the PLMs on specific tasks with labeled data creates high-performing models for many NLP tasks. The script plm.py fine-tunes Multilingual BERT and can be run with the following command: 
 
 ```
 python plm.py
@@ -58,7 +58,7 @@ It takes about 25 minutes to run the script with the given hyperparameter setup 
 
 * Selecting the PLM to fine-tune has a significant impact on performance. The PLM should have been pretrained with all the languages that are covered in the fine-tuning dataset. Typically, larger PLMs provide higher performance but do also require more computation.  
 
-* The number of training epochs has a significant impact on performance. Many epochs can lead to overfitting and waste computation. Few of them may not provide acceptable performance.  
+* The number of training epochs has a significant impact on performance. Many epochs can lead to overfitting and waste of computation. Few of them may not provide acceptable performance.  
 
 * This approach to solving the language identification task is limited by the languages that are supported in the training dataset. 
 
